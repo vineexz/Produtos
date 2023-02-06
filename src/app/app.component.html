@@ -13,8 +13,12 @@
   <p class="lead fw-normal">A ideia desta pagina é fazer a conexão de uma serie de produtos, selecionando os catalogos e fazendo o cadastro manualmente. Faça um teste clique a baixo</p>
 
   <div class="d-grid gap-2 col-6 mx-auto">
-    <a class="btn btn-primary" routerLink="Catalogos">Clique aqui </a>
+    <a class="btn btn-primary" routerLink="Catalogos" (click)="page()">Clique aqui </a>
   </div>
     <div class="text-center form-text">Clique para cadastrar primeiros os catalogos</div>
 </div>
-<app-catalogo></app-catalogo>
+<ng-template ngFor let-item [ngForOf]="list">
+  <app-catalogo></app-catalogo>
+</ng-template>
+
+
