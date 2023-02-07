@@ -9,16 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'produtos';
-  destruir: boolean = false;
-  clicarok: boolean = true;
+  clicarOk: boolean = true;
+
 
   contructor() {}
   ngOnInit(): void {
   }
 
-  page() {
-
+  ClickPage() {
+    this.clicarOk = true;
   }
 }
-
-
