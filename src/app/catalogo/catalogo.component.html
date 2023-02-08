@@ -1,15 +1,18 @@
-<form action="">
-<div class="card" style="width: 18rem;">
+<form [formGroup]="formulario">
+
+<div class="card ms-5" style="width: 18rem;">
   <img src="..." class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">Titulo do produto</h5>
     <p class="card-text">Clique para cadastrar descrição</p>
   </div>
+
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cadastrar</li>
-    <li class="list-group-item">Valor do produto</li>
-    <li class="list-group-item"></li>
-    <li><button>Salvar</button></li>
+    <input class="list-group-item" type="text" name="" id="nome" placeholder="Titulo do produto">
+    <input class="list-group-item" type="text" name="" id="descricao" placeholder="Descição do produto">
+    <input class="list-group-item" type="number" name="" id="valor" placeholder="Insira o valor do produto">
+    <button type="submit" (click)="onClickAdd()" class="btn btn-outline-success">Cadastrar</button>
   </ul>
+
 </div>
 </form>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -7,15 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./catalogo.component.css']
 })
 export class CatalogoComponent implements OnInit {
+  public formulario!: FormGroup ;
   public nome: string = '';
+  public descricao: string = '';
   public preco: number = 0;
-  public list: Array<{ nome: string, preco: number }> = [];
+  public list: Array<{ nome: string, descricao: string, preco: number }> = [];
 
 
-  constructor() {}
-  ngOnInit(): void {}
+  constructor(private formBuilder: FormBuilder) {}
+  ngOnInit(): void {
+    this.formulario = this.formBuilder.group({
+      nome: [''],
+      descricao: [''],
+      preco: [0]
+    })
+  }
 
   public onClickAdd(){
-    this.list.push({nome: '', preco: 0})
+    this.formulario.value
+    console.log('Formulario valido', this.formulario.value);
+
   }
 }
