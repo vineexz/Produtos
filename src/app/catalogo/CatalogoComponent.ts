@@ -10,6 +10,9 @@ import { ModelsModule } from '../models/models.module';
 })
 export class CatalogoComponent implements OnInit {
   public formulario: FormGroup | any;
+  public nome: string = '';
+  public descricao: string = '';
+  public preco: number = 0;
   public list: Array<{ nome: string, descricao: string, preco: number }> = [];
 
 
