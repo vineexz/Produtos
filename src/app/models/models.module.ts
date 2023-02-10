@@ -13,7 +13,8 @@ export class ModelsModule {
   id: number = 0;
   nome: string = '';
   descricao: string = '';
-  preco: number = 0;
+  preco: number = 0 ;
   estoque: number = 0;
   DataCadastro: Date | undefined;
 }
+
