@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ModelsModule } from '../models/models.module';
 
 @Component({
   selector: 'app-catalogo',
@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./catalogo.component.css']
 })
 export class CatalogoComponent implements OnInit {
-  public formulario!: FormGroup ;
+  public formulario: FormGroup | any;
   public nome: string = '';
   public descricao: string = '';
   public preco: number = 0;
@@ -16,17 +16,24 @@ export class CatalogoComponent implements OnInit {
 
 
   constructor(private formBuilder: FormBuilder) {}
-  ngOnInit(): void {
+
+  ngOnInit() {
+   this.Cform(new ModelsModule());
+    }
+
+
+  Cform ( models: ModelsModule){
     this.formulario = this.formBuilder.group({
-      nome: [''],
-      descricao: [''],
-      preco: [0]
+      nome: [models.nome, Validators.required],
+      descricao: [models.descricao, Validators.minLength(3)],
+      preco: [models.preco, Validators.maxLength(1)]
     })
-  }
+   }
 
-  public onClickAdd(){
-    this.formulario.value
-    console.log('Formulario valido', this.formulario.value);
-
-  }
-}
+  onSubmit(){
+    if(this.formulario.valid){
+    console.log('formulario valido', this.formulario.value);
+    } else {
+      console.log('formulario invalido');
+    }
+  }}

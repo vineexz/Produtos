@@ -1,4 +1,4 @@
-<form [formGroup]="formulario">
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
 
 <div class="card ms-5" style="width: 18rem;">
   <img src="..." class="card-img-top" alt="...">
@@ -8,10 +8,10 @@
   </div>
 
   <ul class="list-group list-group-flush">
-    <input class="list-group-item" type="text" name="" id="nome" placeholder="Titulo do produto">
-    <input class="list-group-item" type="text" name="" id="descricao" placeholder="Descição do produto">
-    <input class="list-group-item" type="number" name="" id="valor" placeholder="Insira o valor do produto">
-    <button type="submit" (click)="onClickAdd()" class="btn btn-outline-success">Cadastrar</button>
+    <input class="list-group-item" type="text" formControlName="nome" id="nome" placeholder="Titulo do produto"> {{ nome }}
+    <input class="list-group-item" type="text" formControlName="descricao" id="descricao" placeholder="Descição do produto">
+    <input class="list-group-item" type="number" formControlName="preco" id="valor" placeholder="Insira o valor do produto">
+    <input type="submit" class="btn btn-outline-success" value="Cadastrar">
   </ul>
 
 </div>
