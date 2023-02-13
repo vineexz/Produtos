@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-
-
 @NgModule({
   declarations: [],
   imports: [
@@ -16,5 +14,6 @@ export class ModelsModule {
   preco: number = 0 ;
   estoque: number = 0;
   DataCadastro: Date | undefined;
+
 }
 

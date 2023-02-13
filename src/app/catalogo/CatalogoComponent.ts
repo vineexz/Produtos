@@ -9,11 +9,12 @@ import { ModelsModule } from '../models/models.module';
   styleUrls: ['./catalogo.component.css']
 })
 export class CatalogoComponent implements OnInit {
-  public formulario: FormGroup | any;
+  public formulario!: FormGroup ;
   public nome: string = '';
   public descricao: string = '';
   public preco: number = 0;
   public list: Array<{ nome: string, descricao: string, preco: number }> = [];
+  
 
 
   constructor(private formBuilder: FormBuilder) {}
@@ -33,8 +34,14 @@ export class CatalogoComponent implements OnInit {
 
   onSubmit(){
     if(this.formulario.valid){
-    console.log('formulario valido', this.formulario.value);
+      this.formulario.get('nome')?.value
+
     } else {
       console.log('formulario invalido');
     }
-  }}
+  }
+
+  adicionar() {
+
+  }
+}
