@@ -13,8 +13,8 @@ export class CatalogoComponent implements OnInit {
   public nome: string = '';
   public descricao: string = '';
   public preco: number = 0;
-  public list: Array<{ nome: string, descricao: string, preco: number }> = [];
-  
+  public list: Array<{ nome: string, descricao: string, preco: number }> = [  ];
+
 
 
   constructor(private formBuilder: FormBuilder) {}
@@ -33,15 +33,12 @@ export class CatalogoComponent implements OnInit {
    }
 
   onSubmit(){
-    if(this.formulario.valid){
-      this.formulario.get('nome')?.value
-
-    } else {
-      console.log('formulario invalido');
-    }
+    console.log('cliquei no submit');
+    this.list.push({
+      nome: this.formulario.get('nome')?.value,
+      descricao: this.formulario.get('descricao')?.value,
+      preco: this.formulario.get('preco')?.value })
   }
 
-  adicionar() {
-
-  }
+  
 }

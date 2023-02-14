@@ -1,4 +1,3 @@
-import { CatalogoComponent } from './catalogo/CatalogoComponent';
 import { Component, OnInit } from '@angular/core';
 
 
@@ -10,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'produtos';
   clicarOk: boolean = true;
+  condition: boolean = true;
+
 
 
   contructor() {}
@@ -17,6 +18,16 @@ export class AppComponent implements OnInit {
   }
 
   ClickPage() {
-    this.clicarOk = true;
+    this.clicarOk = true
+
+    if(this.condition = true) {
+      this.condition = true
+    } else {
+      this.condition = false
+    }
+
+  }
+  ocultarCadastro() {
+    this.clicarOk = false
   }
 }
