@@ -14,7 +14,7 @@ export class CatalogoComponent implements OnInit {
   public descricao: string = '';
   public preco: number = 0;
   public list: Array<{ nome: string, descricao: string, preco: number }> = [];
-  
+
 
 
   constructor(private formBuilder: FormBuilder) {}
@@ -34,8 +34,8 @@ export class CatalogoComponent implements OnInit {
 
   onSubmit(){
     if(this.formulario.valid){
-      this.formulario.get('nome')?.value
-
+      this.list.push({ nome: '', descricao: '', preco: 0 })
+      
     } else {
       console.log('formulario invalido');
     }
