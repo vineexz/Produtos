@@ -13,7 +13,11 @@ export class CatalogoComponent implements OnInit {
   public nome: string = '';
   public descricao: string = '';
   public preco: number = 0;
+<<<<<<< HEAD
   public list: Array<{ nome: string, descricao: string, preco: number }> = [  ];
+=======
+  public list: Array<{ nome: string, descricao: string, preco: number }> = [];
+>>>>>>> 0eab9fc2f0360adb10ffa6ac6b1972685ff4bb85
 
 
 
@@ -33,11 +37,20 @@ export class CatalogoComponent implements OnInit {
    }
 
   onSubmit(){
+<<<<<<< HEAD
     console.log('cliquei no submit');
     this.list.push({
       nome: this.formulario.get('nome')?.value,
       descricao: this.formulario.get('descricao')?.value,
       preco: this.formulario.get('preco')?.value })
+=======
+    if(this.formulario.valid){
+      this.list.push({ nome: '', descricao: '', preco: 0 })
+      
+    } else {
+      console.log('formulario invalido');
+    }
+>>>>>>> 0eab9fc2f0360adb10ffa6ac6b1972685ff4bb85
   }
 
   
