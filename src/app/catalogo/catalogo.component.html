@@ -3,37 +3,26 @@
 <div class="d-flex flex-wrap ">
 
   <div class="card ms-5 " style="width: 18rem;">
-
      <label for="formFile" class="form-label text-center">Imagem 200x200</label>
-     <input class="form-control" type="file" id="formFile">
+     <input class="form-control" type="file" id="formFile" (change)="uploadImage($event)">
+     <img [src]="localUrl" class="imgPlaceholder">
      <ul class="list-group list-group-flush">
       <input class="list-group-item" type="text" formControlName="nome" id="nome" placeholder="Titulo do produto">
       <input class="list-group-item" type="text" formControlName="descricao" id="descricao" placeholder="Descição do produto">
       <input class="list-group-item" type="number" formControlName="preco" id="valor" placeholder="Insira o valor do produto">
       <input type="submit" class="btn btn-outline-success" value="Cadastrar">
-
    </ul>
   </div>
 
-
-
   <div *ngFor="let item of list" class="card ms-5 my-4" style="width: 18rem;">
-    <img src="./produtos/src/assets/download.png" class="card-img-top" alt="...">
-
-  <div class="card ms-5 d-flex" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-
-    <hr>
+    <img [src]="localUrl" class="card-img-top" alt="...">
     <div class="card-body text-center">
       <h5 class="card-title"> {{ item.nome }} </h5>
       <p class="card-text"> {{ item.descricao }} </p>
     </div>
     <h5 class="card-footer text-center"> {{ item.preco }} </h5>
   </div>
-
-</div>
 </div>
 </form>
-
 
 <footer></footer>
