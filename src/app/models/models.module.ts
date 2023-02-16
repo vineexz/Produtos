@@ -14,6 +14,6 @@ export class ModelsModule {
   preco: number = 0 ;
   estoque: number = 0;
   DataCadastro: Date | undefined;
-  file: string = '';
+  img = null;
 }
 

@@ -15,7 +15,7 @@ export class CatalogoComponent implements OnInit {
   public preco: number = 0;
   public localUrl: any;
   public file?: File;
-  public list: Array<{ nome: string, descricao: string, preco: number }> = [  ];
+  public list: Array<{ nome: string, descricao: string, preco: number, img: any }> = [  ];
 
 
   constructor(private formBuilder: FormBuilder) {}
@@ -30,23 +30,29 @@ export class CatalogoComponent implements OnInit {
       nome: [models.nome, Validators.required],
       descricao: [models.descricao, Validators.minLength(3)],
       preco: [models.preco, Validators.maxLength(1)],
-
+      imagem: [models.img],
     })
    }
 
   onSubmit(){
+    console.log(this.file, this.localUrl);
 
     console.log('cliquei no submit');
     this.list.push({
+
       nome: this.formulario.get('nome')?.value,
       descricao: this.formulario.get('descricao')?.value,
-      preco: this.formulario.get('preco')?.value })
+      preco: this.formulario.get('preco')?.value,
+      img: this.formulario.get('img')?.value
+    })
+
 
     if(this.formulario.valid){
-      this.list.push({ nome: '', descricao: '', preco: 0 })
+
     } else {
       console.log('formulario invalido')
     }
+    this.formulario.reset()
   }
 
   uploadImage(event: any) {
