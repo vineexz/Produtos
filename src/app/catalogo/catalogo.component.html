@@ -1,11 +1,13 @@
 <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
-
 <div class="d-flex flex-wrap ">
 
   <div class="card ms-5 " style="width: 18rem;">
+
      <label for="formFile" class="form-label text-center">Imagem 200x200</label>
-     <input class="form-control" type="file" id="formFile" (change)="uploadImage($event)">
+     <input class="form-control" type="file" accept="image/*" id="formFile" (change)="uploadImage($event)">
+
      <img [src]="localUrl" class="imgPlaceholder">
+
      <ul class="list-group list-group-flush">
       <input class="list-group-item" type="text" formControlName="nome" id="nome" placeholder="Titulo do produto">
       <input class="list-group-item" type="text" formControlName="descricao" id="descricao" placeholder="Descição do produto">

@@ -10,12 +10,9 @@ import { ModelsModule } from '../models/models.module';
 export class CatalogoComponent implements OnInit {
 
   public formulario!: FormGroup ;
-  public nome: string = '';
-  public descricao: string = '';
-  public preco: number = 0;
-  public localUrl: any;
+  public localUrl: any
   public file?: File;
-  public list: Array<{ nome: string, descricao: string, preco: number, img: any }> = [  ];
+  public list: Array <{ nome: string, descricao: string, preco: number, img: any, localUrl: any }> = [  ];
 
 
   constructor(private formBuilder: FormBuilder) {}
@@ -30,12 +27,13 @@ export class CatalogoComponent implements OnInit {
       nome: [models.nome, Validators.required],
       descricao: [models.descricao, Validators.minLength(3)],
       preco: [models.preco, Validators.maxLength(1)],
-      imagem: [models.img],
+      img: [models.img],
+
     })
    }
 
   onSubmit(){
-    console.log(this.file, this.localUrl);
+    console.log(this.file);
 
     console.log('cliquei no submit');
     this.list.push({
@@ -43,15 +41,10 @@ export class CatalogoComponent implements OnInit {
       nome: this.formulario.get('nome')?.value,
       descricao: this.formulario.get('descricao')?.value,
       preco: this.formulario.get('preco')?.value,
-      img: this.formulario.get('img')?.value
+      img: this.formulario.get('img')?.value,
+      localUrl: this.formulario.get('localUrl')?.value
     })
 
-
-    if(this.formulario.valid){
-
-    } else {
-      console.log('formulario invalido')
-    }
     this.formulario.reset()
   }
 
