@@ -1,30 +1,62 @@
-<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
-<div class="d-flex flex-wrap ">
-
-  <div class="card ms-5 " style="width: 18rem;">
-
-     <label for="formFile" class="form-label text-center">Imagem 200x200</label>
-     <input class="form-control" type="file" accept="image/*" id="formFile" (change)="uploadImage($event)">
-
-     <img [src]="localUrl" class="imgPlaceholder">
-
-     <ul class="list-group list-group-flush">
-      <input class="list-group-item" type="text" formControlName="nome" id="nome" placeholder="Titulo do produto">
-      <input class="list-group-item" type="text" formControlName="descricao" id="descricao" placeholder="Descição do produto">
-      <input class="list-group-item" type="number" formControlName="preco" id="valor" placeholder="Insira o valor do produto">
-      <input type="submit" class="btn btn-outline-success" value="Cadastrar">
-   </ul>
+<form
+  class="row g-3 needs-validation"
+  [formGroup]="formulario"
+  (ngSubmit)="onSubmit()">
+  <div class=" ms-5 my-4">
+    <button (click)="toReveal()" *ngIf="!isVisible" type="button" class="fw-bold btn btn-success btn-sm border border-dark">Desocultar Card</button>
   </div>
 
-  <div *ngFor="let item of list" class="card ms-5 my-4" style="width: 18rem;">
-    <img [src]="localUrl" class="card-img-top" alt="...">
-    <div class="card-body text-center">
-      <h5 class="card-title"> {{ item.nome }} </h5>
-      <p class="card-text"> {{ item.descricao }} </p>
+  <div *ngIf="isVisible" class="card d-flex flex-wrap ms-5 my-4 border border-dark" style="width: 18rem">
+    <label for="validationCustom01" class="form-label fw-bold">Nome do produto</label>
+    <input
+      type="text"
+      class="form-control border border-dark"
+      id="validationCustom01"
+      formControlName="nome"
+      [ngClass]="{'is-invalid': submitted && formulario.get('nome')?.errors}"
+      />
+    <div class="invalid-feedback" *ngIf="submitted && formulario.get('nome')?.errors">Nome obrigatorio</div>
+
+    <label for="validationCustom02" class="form-label fw-bold">Descricao do produto</label>
+    <input
+      type="text"
+      class="form-control border border-dark"
+      id="validationCustom02"
+      formControlName="descricao"
+      [ngClass]="{'is-invalid': submitted && formulario.get('descricao')?.errors}"
+    />
+    <div class="invalid-feedback" >Descricao obrigatoria</div>
+    <label for="validationCustom03" class="form-label fw-bold">Preco do produto</label>
+    <input
+      type="number"
+      class="form-control border border-dark"
+      id="validationCustom03"
+      formControlName="preco"
+      [ngClass]="{'is-invalid': submitted && formulario.get('preco')?.errors}"
+    />
+    <div class="invalid-feedback" *ngIf="submitted && formulario.get('preco')?.errors">Preco obrigatorio</div>
+
+    <div class="mb-5 my-4 d-grid gap-2 d-md-flex justify-content-md-center">
+      <button class="btn btn-success border border-dark" type="submit">Adicionar</button>
+      <button class="btn btn-secondary border border-dark " type="button" (click)="onOcult()">
+        Ocultar Card
+      </button>
     </div>
-    <h5 class="card-footer text-center"> {{ item.preco }} </h5>
   </div>
-</div>
-</form>
 
-<footer></footer>
+  <div *ngFor="let item of list" class="card d-flex flex-wrap ms-5 my-4 border border-dark" style="width: 18rem;">
+    <div class="card-body text-center ">
+      <h5 class="card-title border border-dark"> {{ item.nome }} </h5>
+      <div class="badge bg-primary text-wrap" style="width: 15rem;">
+        {{item.descricao}}
+      </div>
+    <h5 class="card-footer my-3 text-center border border-dark"> R$: {{ item.preco }} </h5>
+    <div class="mb-5 my-4 d-grid gap-2 d-md-flex justify-content-md-center">
+    <button class="btn btn-warning border border-dark" type="button" (click)="onEdit()"> Alterar </button>
+    <button class="btn btn-danger border border-dark" type="button" (click)="onCancel()">
+      Excluir
+     </button>
+    </div>
+   </div>
+  </div>
+</form>

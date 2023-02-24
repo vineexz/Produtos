@@ -9,43 +9,65 @@ import { ModelsModule } from '../models/models.module';
 })
 export class CatalogoComponent implements OnInit {
 
-  public formulario!: FormGroup ;
-  public localUrl: any
+  public formulario!: FormGroup;
+  public isVisible: boolean = true;
+  public submitted: boolean = false;
+  public localUrl: any;
   public file?: File;
-  public list: Array <{ nome: string, descricao: string, preco: number, img: any, localUrl: any }> = [  ];
-
+  public list: Array <{ nome: string, descricao: string, preco: number, img: any, localUrl: any }> = [];
 
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
+
    this.Cform(new ModelsModule());
-    }
+  }
 
-
-  Cform ( models: ModelsModule){
+  Cform ( models: ModelsModule ){
     this.formulario = this.formBuilder.group({
+      id: [null],
       nome: [models.nome, Validators.required],
-      descricao: [models.descricao, Validators.minLength(3)],
-      preco: [models.preco, Validators.maxLength(1)],
-      img: [models.img],
+      descricao: [models.descricao, Validators.required],
+      preco: [models.preco, Validators.required],
+      img: [models.img]
 
     })
    }
 
   onSubmit(){
-    console.log(this.file);
-
-    console.log('cliquei no submit');
-    this.list.push({
-
-      nome: this.formulario.get('nome')?.value,
-      descricao: this.formulario.get('descricao')?.value,
-      preco: this.formulario.get('preco')?.value,
-      img: this.formulario.get('img')?.value,
-      localUrl: this.formulario.get('localUrl')?.value
-    })
-
+    console.log(this.formulario.value);
+    if(this.formulario.invalid) {
+      this.submitted = true
+    } else {
+      this.list.push({
+        nome: this.formulario.get('nome')?.value,
+        descricao: this.formulario.get('descricao')?.value,
+        preco: this.formulario.get('preco')?.value,
+        img: this.formulario.get('img')?.value,
+        localUrl: this.formulario.get('localUrl')?.value
+        })
+        this.submitted = false
+    }
     this.formulario.reset()
+  }
+
+  onOcult(){
+    this.isVisible = false
+   }
+  toReveal() {
+    if(this.isVisible) {
+      this.isVisible = false
+    } else {
+      this.isVisible = true
+    }
+  }
+
+  onEdit() {
+    
+  }
+
+  onCancel() {
+
   }
 
   uploadImage(event: any) {
