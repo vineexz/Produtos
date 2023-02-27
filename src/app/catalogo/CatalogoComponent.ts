@@ -14,7 +14,7 @@ export class CatalogoComponent implements OnInit {
   public submitted: boolean = false;
   public localUrl: any;
   public file?: File;
-  public list: Array <{ nome: string, descricao: string, preco: number, img: any, localUrl: any }> = [];
+  public list: Array <{ id: number, nome: string, descricao: string, preco: number, img: any, localUrl: any }> = [];
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -25,7 +25,7 @@ export class CatalogoComponent implements OnInit {
 
   Cform ( models: ModelsModule ){
     this.formulario = this.formBuilder.group({
-      id: [null],
+      id: [models.id],
       nome: [models.nome, Validators.required],
       descricao: [models.descricao, Validators.required],
       preco: [models.preco, Validators.required],
@@ -40,6 +40,7 @@ export class CatalogoComponent implements OnInit {
       this.submitted = true
     } else {
       this.list.push({
+        id: this.formulario.get([])?.value,
         nome: this.formulario.get('nome')?.value,
         descricao: this.formulario.get('descricao')?.value,
         preco: this.formulario.get('preco')?.value,
@@ -54,6 +55,7 @@ export class CatalogoComponent implements OnInit {
   onOcult(){
     this.isVisible = false
    }
+
   toReveal() {
     if(this.isVisible) {
       this.isVisible = false
@@ -63,11 +65,11 @@ export class CatalogoComponent implements OnInit {
   }
 
   onEdit() {
-    
+
   }
 
-  onCancel() {
-
+  onCancel(event: number) {
+    this.list.splice(event, 1)
   }
 
   uploadImage(event: any) {
