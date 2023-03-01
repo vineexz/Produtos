@@ -8,10 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'produtos';
-  clicarOk: boolean = true;
+  click: boolean = false;
+  clicarOk: boolean = false;
   condition: boolean = true;
-
-
 
   contructor() {}
   ngOnInit(): void {
@@ -19,15 +18,16 @@ export class AppComponent implements OnInit {
 
   ClickPage() {
     this.clicarOk = true
-
-    if(this.condition = true) {
-      this.condition = true
-    } else {
-      this.condition = false
-    }
-
   }
+
   ocultarCadastro() {
     this.clicarOk = false
+  }
+
+  clickAPI() {
+    this.click = true
+  }
+  ocultarclickAPI() {
+    this.click = false
   }
 }

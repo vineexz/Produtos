@@ -1,3 +1,4 @@
+import { APIService } from './API/api.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModelsModule } from '../models/models.module';
@@ -9,17 +10,20 @@ import { ModelsModule } from '../models/models.module';
 })
 export class CatalogoComponent implements OnInit {
 
+
   public formulario!: FormGroup;
   public isVisible: boolean = true;
   public submitted: boolean = false;
   public localUrl: any;
   public file?: File;
   public list: Array <{ id: number, nome: string, descricao: string, preco: number, img: any, localUrl: any }> = [];
+  public clicarAPI = true
+
+
 
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
-
    this.Cform(new ModelsModule());
   }
 
@@ -71,6 +75,8 @@ export class CatalogoComponent implements OnInit {
   onCancel(event: number) {
     this.list.splice(event, 1)
   }
+
+
 
   uploadImage(event: any) {
     this.file = <File>event.target.files[0];
