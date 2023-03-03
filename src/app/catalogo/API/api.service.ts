@@ -1,6 +1,7 @@
 import { ModelsModule } from './../../models/models.module';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,11 +9,11 @@ import { Injectable } from '@angular/core';
 })
 
 export class APIService {
-  private readonly API = ''
+  private readonly api = ''
 
   constructor(private http: HttpClient) {  }
 
-   listaAPI() {
-    return this.http.get<ModelsModule[]>(this.API);
-    }
+   getLista (): Observable<ModelsModule> {
+    return this.http.get<ModelsModule>(this.api)
+   }
   }

@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'produtos';
-  click: boolean = false;
-  clicarOk: boolean = false;
+  click: boolean = true;
+  clicarOk: boolean = true;
   condition: boolean = true;
 
   contructor() {}

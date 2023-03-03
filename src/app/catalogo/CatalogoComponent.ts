@@ -1,4 +1,3 @@
-import { APIService } from './API/api.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModelsModule } from '../models/models.module';
@@ -9,7 +8,6 @@ import { ModelsModule } from '../models/models.module';
   styleUrls: ['./catalogo.component.css']
 })
 export class CatalogoComponent implements OnInit {
-
 
   public formulario!: FormGroup;
   public isVisible: boolean = true;
@@ -44,7 +42,7 @@ export class CatalogoComponent implements OnInit {
       this.submitted = true
     } else {
       this.list.push({
-        id: this.formulario.get([])?.value,
+        id: this.formulario.get('')?.value,
         nome: this.formulario.get('nome')?.value,
         descricao: this.formulario.get('descricao')?.value,
         preco: this.formulario.get('preco')?.value,
@@ -75,7 +73,6 @@ export class CatalogoComponent implements OnInit {
   onCancel(event: number) {
     this.list.splice(event, 1)
   }
-
 
 
   uploadImage(event: any) {
