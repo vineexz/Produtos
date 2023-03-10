@@ -14,15 +14,13 @@ export class CatalogoComponent implements OnInit {
   public submitted: boolean = false;
   public localUrl: any;
   public file?: File;
-  public list: Array <{ id: number, nome: string, descricao: string, preco: number, img: any, localUrl: any }> = [];
+  public list: Array <ModelsModule> = [] ;
   public clicarAPI = true
-
-
 
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
-   this.Cform(new ModelsModule());
+    this.Cform(new ModelsModule());
   }
 
   Cform ( models: ModelsModule ){
@@ -30,9 +28,7 @@ export class CatalogoComponent implements OnInit {
       id: [models.id],
       nome: [models.nome, Validators.required],
       descricao: [models.descricao, Validators.required],
-      preco: [models.preco, Validators.required],
-      img: [models.img]
-
+      preco: [models.preco, Validators.required]
     })
    }
 
@@ -46,9 +42,9 @@ export class CatalogoComponent implements OnInit {
         nome: this.formulario.get('nome')?.value,
         descricao: this.formulario.get('descricao')?.value,
         preco: this.formulario.get('preco')?.value,
-        img: this.formulario.get('img')?.value,
-        localUrl: this.formulario.get('localUrl')?.value
-        })
+        estoque: 0,
+        DataCadastro: undefined
+      })
         this.submitted = false
     }
     this.formulario.reset()

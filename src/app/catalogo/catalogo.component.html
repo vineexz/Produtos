@@ -2,6 +2,7 @@
   class="row g-3 needs-validation"
   [formGroup]="formulario"
   (ngSubmit)="onSubmit()">
+
   <div class="ms-5 my-4">
     <button (click)="toReveal()" *ngIf="!isVisible" type="button" class="fw-bold btn btn-success btn-sm border border-dark">Desocultar Card</button>
   </div>
@@ -44,9 +45,9 @@
     </div>
   </div>
 
-  <div *ngFor="let item of list; let id = index" class="card d-flex flex-wrap ms-5 my-4 border border-dark" style="width: 18rem;">
+  <div *ngFor="let item of list" class="card d-flex flex-wrap ms-5 my-4 border border-dark" style="width: 18rem;">
     <div class="card-body text-center ">
-      <p>[{{id}}]</p>
+      <p>[{{item.id}}]</p>
       <h5 class="card-title border border-dark"> {{ item.nome }} </h5>
       <div class="badge bg-primary text-wrap" style="width: 15rem;">
         {{item.descricao}}
@@ -54,7 +55,7 @@
     <h5 class="card-footer my-3 text-center border border-dark"> R$: {{ item.preco }} </h5>
     <div class="mb-5 my-4 d-grid gap-2 d-md-flex justify-content-md-center">
     <button class="btn btn-warning border border-dark" type="button" (click)="onEdit()"> Alterar </button>
-    <button class="btn btn-danger border border-dark" type="button" (click)="onCancel(id)">
+    <button class="btn btn-danger border border-dark" type="button" (click)="onCancel(item.id)">
       Excluir
      </button>
     </div>

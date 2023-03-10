@@ -1,9 +1,7 @@
-import { CatalogoComponent } from './../../catalogo/CatalogoComponent';
 import { ModelsModule } from '../../models/models.module';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ListaAPIComponent } from '../lista-api.component';
 
 @Injectable({
   providedIn: 'root'

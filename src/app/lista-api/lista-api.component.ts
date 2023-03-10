@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class ListaAPIComponent implements OnInit {
   produtos: ModelsModule[] = []
 
+
   constructor(private api: APIService) {
     this.getLista()
   }
