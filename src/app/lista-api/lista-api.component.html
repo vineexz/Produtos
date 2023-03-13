@@ -1,0 +1,16 @@
+
+<form class="row g-3 my-3">
+<h1 class="text-center"> CARREGAMENTO DA API JSON-SERVE </h1>
+<div *ngFor="let item of produtos " class=" card d-flex flex-wrap ms-5 my-4 border border-dark" style="width: 18rem;">
+  <div class="card-body text-center ">
+    <p>[{{item.id}}]</p>
+    <h5 class="card-title border border-dark"> {{ item.nome }} </h5>
+    <div class="badge bg-primary text-wrap" style="width: 15rem;">
+      {{item.descricao}}
+    </div>
+  <h5 class="card-footer my-3 text-center border border-dark"> R$: {{ item.preco }} </h5>
+  <div class="mb-5 my-4 d-grid gap-2 d-md-flex justify-content-md-center">
+  </div>
+ </div>
+</div>
+</form>
