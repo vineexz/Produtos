@@ -17,5 +17,11 @@ export class APIService {
     return this.http.get<ModelsModule[]>(this.api)
    }
 
+   remove(id: number) {
+    return this.http.delete<ModelsModule>(`${this.api}/${id}`);
+   }
 
+   getAdd(list: ModelsModule) {
+    return this.http.post(this.api, list);
+   }
   }

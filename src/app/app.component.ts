@@ -8,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'produtos';
-  click: boolean = true;
   clicarOk: boolean = true;
   condition: boolean = true;
+  click: boolean = false;
 
   contructor() {}
   ngOnInit(): void {
@@ -26,8 +26,17 @@ export class AppComponent implements OnInit {
 
   clickAPI() {
     this.click = true
+
   }
+
   ocultarclickAPI() {
-    this.click = false
+
+    if(this.click) {
+      this.click = false
+    } else {
+      this.click = true
+    }
+
   }
-}
+  }
+

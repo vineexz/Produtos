@@ -24,11 +24,15 @@
   <app-catalogo></app-catalogo>
 </div>
 
-<div class="d-grid gap-2 col-2 mx-auto" *ngIf="clicarOk">
-  <button class="btn btn-success" routerLink="Catalogos/ListaAPI" (click)="clickAPI()" type="button">CARREGAR API</button>
-  <button class="btn btn-dark" (click)="ocultarclickAPI()" type="button">OCULTAR API</button>
+<div class="mb-5 my-4 d-grid gap-2 d-md-flex justify-content-md-center">
+  <button class="btn btn-success border border-dark" type="button" *ngIf="!click" (click)="clickAPI()">GERAR API</button>
+  <button class="btn btn-dark border border-dark " type="button" *ngIf="click"(click)="ocultarclickAPI()">
+    OCULTAR API
+  </button>
 </div>
-
-<div *ngIf="click" (click)="ocultarclickAPI()">
+<div *ngIf="click">
   <app-lista-api></app-lista-api>
 </div>
+
+
+

@@ -18,4 +18,9 @@ export class ListaAPIComponent implements OnInit {
   getLista(): void {
    this.api.getAll().subscribe((produtos) => (this.produtos = produtos))
   }
+
+  removeCard(produtos: ModelsModule) {
+    this.produtos = this.produtos.filter((a) => produtos.id !== a.id)
+    this.api.remove(produtos.id).subscribe();
+  }
 }

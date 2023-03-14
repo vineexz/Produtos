@@ -45,7 +45,7 @@
     </div>
   </div>
 
-  <div *ngFor="let item of list " class="card d-flex flex-wrap ms-5 my-4 border border-dark" style="width: 18rem;">
+  <div *ngFor="let item of produtos " class="card d-flex flex-wrap ms-5 my-4 border border-dark" style="width: 18rem;">
     <div class="card-body text-center ">
       <p>[{{item.id}}]</p>
       <h5 class="card-title border border-dark"> {{ item.nome }} </h5>
@@ -54,7 +54,7 @@
       </div>
     <h5 class="card-footer my-3 text-center border border-dark"> R$: {{ item.preco }} </h5>
     <div class="mb-5 my-4 d-grid gap-2 d-md-flex justify-content-md-center">
-    <button class="btn btn-warning border border-dark" type="button" (click)="onEdit()"> Alterar </button>
+    <button class="btn btn-warning border border-dark" type="button" (click)="enviarApi()"> Registrar na API</button>
     <button class="btn btn-danger border border-dark" type="button" (click)="onCancel(item.id)">
       Excluir
      </button>
