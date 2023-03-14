@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModelsModule } from '../models/models.module';
-import { APIService } from '../lista-api/API/api.service';
 
 @Component({
   selector: 'app-catalogo',
@@ -17,7 +16,7 @@ export class CatalogoComponent implements OnInit {
   public file?: File;
   public produtos: Array <ModelsModule> = [] ;
 
-  constructor(private formBuilder: FormBuilder, api: APIService) {}
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.Cform(new ModelsModule());
@@ -63,7 +62,7 @@ export class CatalogoComponent implements OnInit {
   }
 
   enviarApi() {
-    
+
   }
 
   onCancel(event: number) {

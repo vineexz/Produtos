@@ -1,3 +1,4 @@
+import { FormGroup } from '@angular/forms';
 import { ModelsModule } from './../models/models.module';
 import { APIService } from './API/api.service';
 import { Component, OnInit } from '@angular/core';
@@ -22,5 +23,9 @@ export class ListaAPIComponent implements OnInit {
   removeCard(produtos: ModelsModule) {
     this.produtos = this.produtos.filter((a) => produtos.id !== a.id)
     this.api.remove(produtos.id).subscribe();
+  }
+
+  addList() {
+
   }
 }

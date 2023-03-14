@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 
 export class APIService {
   private readonly api = 'http://localhost:3000/produtos'
-
+  
   constructor(private http: HttpClient) {  }
 
     getAll(): Observable<ModelsModule[]> {
@@ -21,7 +21,7 @@ export class APIService {
     return this.http.delete<ModelsModule>(`${this.api}/${id}`);
    }
 
-   getAdd(list: ModelsModule) {
-    return this.http.post(this.api, list);
+   getAdd(produtos: any) {
+    return this.http.post(this.api, produtos)
    }
   }
