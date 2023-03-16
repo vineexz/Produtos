@@ -1,6 +1,6 @@
-import { ModelsModule } from '../../models/models.module';
+import { ModelsModule } from '../models/models.module';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,10 +8,13 @@ import { Observable } from 'rxjs';
 
 })
 
-export class APIService {
+export class APIService implements OnInit {
   private readonly api = 'http://localhost:3000/produtos'
-  
+
   constructor(private http: HttpClient) {  }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
     getAll(): Observable<ModelsModule[]> {
     return this.http.get<ModelsModule[]>(this.api)

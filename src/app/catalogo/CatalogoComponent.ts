@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { APIService } from '../lista-api/API/api.service';
+import { APIService } from '../API/api.service';
 import { ModelsModule } from '../models/models.module';
 
 @Component({
@@ -16,9 +16,8 @@ export class CatalogoComponent implements OnInit {
   public localUrl: any;
   public file?: File;
   public produtos: Array <ModelsModule> = [] ;
-  public api : APIService | undefined;
 
-  constructor(private formBuilder: FormBuilder, api: APIService) {}
+  constructor(private formBuilder: FormBuilder, _api: APIService) {}
 
   ngOnInit() {
     this.Cform(new ModelsModule());
@@ -39,6 +38,7 @@ export class CatalogoComponent implements OnInit {
     if(this.formulario.invalid) {
       this.submitted = true
     } else {
+
       this.produtos.push({
         id: this.formulario.get('')?.value,
         nome: this.formulario.get('nome')?.value,
@@ -65,7 +65,7 @@ export class CatalogoComponent implements OnInit {
   }
 
   enviarApi() {
-    
+
   }
 
   onCancel(event: number) {
