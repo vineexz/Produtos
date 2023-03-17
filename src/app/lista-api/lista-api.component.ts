@@ -7,6 +7,7 @@ import { APIService } from '../API/api.service';
   templateUrl: './lista-api.component.html',
   styleUrls: ['./lista-api.component.css']
 })
+
 export class ListaAPIComponent implements OnInit {
   produtos: ModelsModule[] = []
 

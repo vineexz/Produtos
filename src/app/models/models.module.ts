@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
   ]
 })
 export class ModelsModule {
+
   id: number = 1;
   nome: string = '';
   descricao: string = '';
