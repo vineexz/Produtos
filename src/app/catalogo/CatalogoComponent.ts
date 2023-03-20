@@ -15,13 +15,18 @@ export class CatalogoComponent implements OnInit {
   public submitted: boolean = false;
   public localUrl: any;
   public file?: File;
-  public produtos: Array <ModelsModule> = [] ;
 
-  constructor(private formBuilder: FormBuilder, _api: APIService) {}
+  public produtos: ModelsModule[] = [];
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private api: APIService) {
+
+  }
 
   ngOnInit() {
     this.Cform(new ModelsModule());
-
+    this.api.getAll()
   }
 
   Cform ( models: ModelsModule ){
@@ -38,14 +43,12 @@ export class CatalogoComponent implements OnInit {
     if(this.formulario.invalid) {
       this.submitted = true
     } else {
-
+      console.log(this.produtos);
       this.produtos.push({
         id: this.formulario.get('')?.value,
         nome: this.formulario.get('nome')?.value,
         descricao: this.formulario.get('descricao')?.value,
         preco: this.formulario.get('preco')?.value,
-        estoque: 0,
-        DataCadastro: undefined
       })
         this.submitted = false
     }
@@ -65,13 +68,12 @@ export class CatalogoComponent implements OnInit {
   }
 
   enviarApi() {
-
+    this.api.getAdd(this.produtos).subscribe()
   }
 
   onCancel(event: number) {
     this.produtos.splice(event, 1)
   }
-
 
   uploadImage(event: any) {
     this.file = <File>event.target.files[0];
@@ -83,5 +85,4 @@ export class CatalogoComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]);
     }
   }
-
 }

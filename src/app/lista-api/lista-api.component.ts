@@ -14,7 +14,7 @@ export class ListaAPIComponent implements OnInit {
   constructor(private api: APIService) {
     this.getLista()
   }
-  ngOnInit(): void {}
+  ngOnInit() {}
 
   getLista(): void {
    this.api.getAll().subscribe((produtos) => (this.produtos = produtos))
@@ -22,6 +22,6 @@ export class ListaAPIComponent implements OnInit {
 
   removeCard(produtos: ModelsModule) {
     this.produtos = this.produtos.filter((a) => produtos.id !== a.id)
-    this.api.remove(produtos.id).subscribe();
+    this.api.remove(produtos.id).subscribe()
   }
 }

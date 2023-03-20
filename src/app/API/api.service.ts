@@ -12,8 +12,7 @@ export class APIService implements OnInit {
   private readonly api = 'http://localhost:3000/produtos'
 
   constructor(private http: HttpClient) {  }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
+  ngOnInit(){
   }
 
     getAll(): Observable<ModelsModule[]> {
