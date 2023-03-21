@@ -16,7 +16,7 @@ export class CatalogoComponent implements OnInit {
   public localUrl: any;
   public file?: File;
 
-  public produtos: ModelsModule[] = [];
+  public produtos: ModelsModule[] = [] ;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -68,7 +68,7 @@ export class CatalogoComponent implements OnInit {
   }
 
   enviarApi() {
-    this.api.getAdd(this.produtos).subscribe()
+    this.api.getAdd(this.formulario.value).subscribe()
   }
 
   onCancel(event: number) {

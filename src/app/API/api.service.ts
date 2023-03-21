@@ -1,7 +1,7 @@
 import { ModelsModule } from '../models/models.module';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +24,6 @@ export class APIService implements OnInit {
    }
 
    getAdd(produtos: any) {
-    return this.http.post(this.api, produtos)
+    return this.http.post(this.api, produtos).pipe(take(4))
    }
   }
