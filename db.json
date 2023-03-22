@@ -36,10 +36,30 @@
       "descricao": "Aqui esta a descrição do produto 6",
       "preco": 35
     },
+    {
+      "id": 7,
+      "nome": null,
+      "descricao": null,
+      "preco": null
+    },
     [
       {
         "nome": "VInicius",
-        "descricao": "123",
+        "descricao": "Descricao",
+        "preco": 123
+      }
+    ],
+    [
+      {
+        "nome": "VInicius",
+        "descricao": "Descricao",
+        "preco": 123
+      }
+    ],
+    [
+      {
+        "nome": "VInicius",
+        "descricao": "Descricao",
         "preco": 123
       }
     ]

@@ -48,7 +48,7 @@
 
   <div *ngFor="let item of produtos " class="card d-flex flex-wrap ms-5 my-4 border border-dark" style="width: 18rem;">
     <div class="card-body text-center ">
-      <p>[{{item.id}}]</p>
+      <p>{{item.id}}</p>
       <h5 class="card-title border border-dark"> {{ item.nome }} </h5>
       <div class="badge bg-primary text-wrap" style="width: 15rem;">
         {{item.descricao}}

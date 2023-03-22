@@ -31,7 +31,7 @@ export class CatalogoComponent implements OnInit {
 
   Cform ( models: ModelsModule ){
     this.formulario = this.formBuilder.group({
-      id: [models.id],
+      id: [models.id, Validators.required],
       nome: [models.nome, Validators.required],
       descricao: [models.descricao, Validators.required],
       preco: [models.preco, Validators.required]
@@ -68,7 +68,9 @@ export class CatalogoComponent implements OnInit {
   }
 
   enviarApi() {
-    this.api.getAdd(this.produtos).subscribe()
+    this.api.getAdd(this.produtos).subscribe(
+      (res) => (console.log(res )
+    ))
   }
 
   onCancel(event: number) {
