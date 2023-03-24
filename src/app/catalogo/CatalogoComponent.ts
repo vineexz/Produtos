@@ -45,7 +45,7 @@ export class CatalogoComponent implements OnInit {
     } else {
       console.log(this.produtos);
       this.produtos.push({
-        id: this.formulario.get('')?.value,
+        id: this.formulario.get('id')!.value,
         nome: this.formulario.get('nome')?.value,
         descricao: this.formulario.get('descricao')?.value,
         preco: this.formulario.get('preco')?.value,
@@ -69,9 +69,11 @@ export class CatalogoComponent implements OnInit {
 
   enviarApi() {
     this.api.getAdd(this.produtos).subscribe(
-      (res) => (console.log(res )
-    ))
-  }
+    
+      () => console.log('sucesso')
+
+      )
+    }
 
   onCancel(event: number) {
     this.produtos.splice(event, 1)

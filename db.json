@@ -35,37 +35,6 @@
       "nome": "Produtos 6 API",
       "descricao": "Aqui esta a descrição do produto 6",
       "preco": 35
-    },
-    {
-      "id": 7,
-      "nome": null,
-      "descricao": null,
-      "preco": null
-<<<<<<< HEAD
-    },
-    [
-      {
-        "nome": "VInicius",
-        "descricao": "Descricao",
-        "preco": 123
-      }
-    ],
-    [
-      {
-        "nome": "VInicius",
-        "descricao": "Descricao",
-        "preco": 123
-      }
-    ],
-    [
-      {
-        "nome": "VInicius",
-        "descricao": "Descricao",
-        "preco": 123
-      }
-    ]
-=======
     }
->>>>>>> 79c80bcff6b793cc86dfc9296b99564a7afc835a
   ]
 }

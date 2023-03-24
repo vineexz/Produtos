@@ -13,5 +13,5 @@ export class ModelsModule {
   nome: string = '';
   descricao: string = '';
   preco: number = 0 ;
-
+  
 }

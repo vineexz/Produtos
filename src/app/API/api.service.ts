@@ -24,6 +24,6 @@ export class APIService implements OnInit {
    }
 
    getAdd(produtos: any) {
-    return this.http.post(this.api, produtos).pipe(take(4))
+    return this.http.post(this.api, produtos)
    }
   }
