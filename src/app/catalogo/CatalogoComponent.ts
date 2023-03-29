@@ -11,12 +11,13 @@ import { ModelsModule } from '../models/models.module';
 export class CatalogoComponent implements OnInit {
 
   public formulario!: FormGroup;
+  public produtos: ModelsModule[] = []
   public isVisible: boolean = true;
 
   public localUrl: any;
   public file?: File;
 
-  public produtos: ModelsModule[] = [] ;
+
 
   constructor(private api: APIService) { }
 
@@ -24,9 +25,9 @@ export class CatalogoComponent implements OnInit {
     this.formulario = new FormGroup({
       nome: new FormControl('', [Validators.required]),
       descricao: new FormControl('', [Validators.required]),
-      preco: new FormControl('' , [Validators.required]),
-    })
-  }
+      preco: new FormControl('' , [Validators.required])
+    })}
+
   get id() {
     return this.formulario.get('id');
   }
@@ -40,16 +41,18 @@ export class CatalogoComponent implements OnInit {
     return this.formulario.get('preco')!;
   }
 
-  onSubmit(){
+  async onSubmit(model: ModelsModule){
+    const formData = new FormData()
+    formData.append('nome', model.nome)
+    formData.append('descricao', model.descricao)
+    formData.append('preco', model.preco)
 
-    if(this.formulario.invalid) {
-      console.log('formulario invalido');
-      return
-    }else {
-      console.log('enviou o formulario');
-      console.log(this.formulario.value)
-    }
+    this.api.getAdd(formData).subscribe()
+  }
 
+
+  onCancel(event: number) {
+    this.produtos.splice(event, 1)
   }
 
   toReveal() {
@@ -60,15 +63,6 @@ export class CatalogoComponent implements OnInit {
     }
   }
 
-  enviarApi(produtos: ModelsModule) {
-    this.api.getAdd(this.produtos).subscribe(
-      () => this.produtos.push()
-    )
-}
-
-  onCancel(event: number) {
-    this.produtos.splice(event, 1)
-  }
 
 
   // Upload da img assim que terminar todas as questões do formulario
@@ -83,3 +77,7 @@ export class CatalogoComponent implements OnInit {
   //   }
   // }
 }
+function input() {
+  throw new Error('Function not implemented.');
+}
+

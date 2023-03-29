@@ -1,7 +1,7 @@
 <form
   class="row g-3 needs-validation" novalidate
   [formGroup]="formulario"
-  #frm="ngForm" (ngSubmit)="onSubmit()" #formDir="ngForm">
+  (ngSubmit)="onSubmit($event)" #formDir="ngForm">
 
   <div class="ms-5 my-4">
     <button (click)="toReveal()" *ngIf="!isVisible" type="button" class="fw-bold btn btn-success btn-sm border border-dark">Desocultar Card</button>
@@ -46,13 +46,11 @@
     </div>
 
     <div class="mb-5 my-4 d-grid gap-2 d-md-flex justify-content-md-center">
-      <button class="btn btn-success border border-dark" type="submit" [disabled]="formulario.invalid">Adicionar</button>
+      <button class="btn btn-success border border-dark" type="submit">Adicionar</button>
       <button class="btn btn-secondary border border-dark " type="button" (click)="toReveal()">
         Ocultar Card
       </button>
     </div>
-  </div>
-
   <div *ngFor="let item of produtos " class="card d-flex flex-wrap ms-5 my-4 border border-dark" style="width: 18rem;">
     <div class="card-body text-center ">
       <p>{{item.id}}</p>
@@ -62,12 +60,14 @@
       </div>
     <h5 class="card-footer my-3 text-center border border-dark"> R$: {{ item.preco }} </h5>
     <div class="mb-5 my-4 d-grid gap-2 d-md-flex justify-content-md-center">
-    <button class="btn btn-primary border border-dark" type="button" (click)="enviarApi(item)"> Registrar na API</button>
+    <button class="btn btn-primary border border-dark" type="button"> Registrar na API</button>
     <button class="btn btn-danger border border-dark" type="button" (click)="onCancel(item.id)">
       Excluir
      </button>
     </div>
    </div>
   </div>
+  </div>
 </form>
+
 

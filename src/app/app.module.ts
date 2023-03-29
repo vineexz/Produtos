@@ -13,7 +13,6 @@ import { ListaAPIComponent } from './lista-api/lista-api.component';
     AppComponent,
     CatalogoComponent,
     ListaAPIComponent
-
   ],
   imports: [
     BrowserModule,

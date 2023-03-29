@@ -23,7 +23,7 @@ export class APIService implements OnInit {
     return this.http.delete<ModelsModule>(`${this.api}/${id}`);
    }
 
-   getAdd(produtos: any) {
-    return this.http.post(this.api, produtos)
+   getAdd(formData: FormData): Observable<FormData> {
+    return this.http.post<FormData>(this.api, formData)
    }
   }
