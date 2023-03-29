@@ -35,6 +35,14 @@
       "nome": "Produtos 6 API",
       "descricao": "Aqui esta a descrição do produto 6",
       "preco": 35
-    }
+    },
+    [
+      {
+        "id": 1,
+        "nome": "Vinicius",
+        "descricao": "Descricao",
+        "preco": 123
+      }
+    ]
   ]
 }

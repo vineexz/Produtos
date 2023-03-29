@@ -1,46 +1,53 @@
 <form
-  method="post"
-  class="row g-3 needs-validation"
+  class="row g-3 needs-validation" novalidate
   [formGroup]="formulario"
-  #frm="ngForm" (ngSubmit)="onSubmit()">
+  #frm="ngForm" (ngSubmit)="onSubmit()" #formDir="ngForm">
 
   <div class="ms-5 my-4">
     <button (click)="toReveal()" *ngIf="!isVisible" type="button" class="fw-bold btn btn-success btn-sm border border-dark">Desocultar Card</button>
   </div>
 
   <div *ngIf="isVisible" class="card d-flex flex-wrap ms-5 my-4 border border-dark" style="width: 18rem">
-    <label for="validationCustom01" class="form-label fw-bold">Nome do produto</label>
-    <input
-      type="text"
-      class="form-control border border-dark"
-      id="validationCustom01"
-      formControlName="nome"
-      [ngClass]="{'is-invalid': submitted && formulario.get('nome')?.errors}"
-      />
-    <div class="invalid-feedback" *ngIf="submitted && formulario.get('nome')?.errors">Nome obrigatorio</div>
 
-    <label for="validationCustom02" class="form-label fw-bold">Descricao do produto</label>
+    <label for="validationTooltip01" class="form-label fw-bold">Nome do produto</label>
+    <input
+      type="text"
+      class="form-control is-invalid border border-dark"
+      id="validationTooltip01"
+      formControlName="nome"
+      required
+      >
+    <div *ngIf="nome.invalid && formDir.submitted" class="invalid-tooltip position-static">
+      <p *ngIf="nome.errors?.['required']">Nome obrigatorio</p>
+    </div>
+
+    <label for="validationTooltip02" class="form-label fw-bold">Descricao do produto</label>
     <input
       type="text"
       class="form-control border border-dark"
-      id="validationCustom02"
+      id="validationTooltip02"
       formControlName="descricao"
-      [ngClass]="{'is-invalid': submitted && formulario.get('descricao')?.errors}"
+      required
     />
-    <div class="invalid-feedback" >Descricao obrigatoria</div>
-    <label for="validationCustom03" class="form-label fw-bold">Preco do produto</label>
+    <div *ngIf="descricao.invalid && formDir.submitted" class="invalid-tooltip position-static">
+      <p *ngIf="descricao.errors?.['required']" >Descrição obrigatorio</p>
+    </div>
+
+    <label for="validationTooltip03" class="form-label fw-bold">Preco do produto</label>
     <input
       type="number"
       class="form-control border border-dark"
-      id="validationCustom03"
+      id="validationTooltip03"
       formControlName="preco"
-      [ngClass]="{'is-invalid': submitted && formulario.get('preco')?.errors}"
+      required
     />
-    <div class="invalid-feedback" *ngIf="submitted && formulario.get('preco')?.errors">Preco obrigatorio</div>
+    <div *ngIf="preco.invalid && formDir.submitted" class="invalid-tooltip position-static">
+      <div *ngIf="preco.errors?.['required']">Valor obrigatorio</div>
+    </div>
 
     <div class="mb-5 my-4 d-grid gap-2 d-md-flex justify-content-md-center">
       <button class="btn btn-success border border-dark" type="submit">Adicionar</button>
-      <button class="btn btn-secondary border border-dark " type="button" (click)="onOcult()">
+      <button class="btn btn-secondary border border-dark " type="button" (click)="toReveal()">
         Ocultar Card
       </button>
     </div>
@@ -55,7 +62,7 @@
       </div>
     <h5 class="card-footer my-3 text-center border border-dark"> R$: {{ item.preco }} </h5>
     <div class="mb-5 my-4 d-grid gap-2 d-md-flex justify-content-md-center">
-    <button class="btn btn-primary border border-dark" type="button" (click)="enviarApi()"> Registrar na API</button>
+    <button class="btn btn-primary border border-dark" type="button" (click)="enviarApi(item)"> Registrar na API</button>
     <button class="btn btn-danger border border-dark" type="button" (click)="onCancel(item.id)">
       Excluir
      </button>
