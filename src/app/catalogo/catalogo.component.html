@@ -17,8 +17,8 @@
       formControlName="nome"
       required
       >
-    <div *ngIf="nome.invalid && formDir.submitted" class="invalid-tooltip position-static">
-      <p *ngIf="nome.errors?.['required']">Nome obrigatorio</p>
+    <div *ngIf="nome.invalid && formDir.submitted" class="validation-error invalid-tooltip position-static">
+      Nome obrigatorio
     </div>
 
     <label for="validationTooltip02" class="form-label fw-bold">Descricao do produto</label>
@@ -30,7 +30,7 @@
       required
     />
     <div *ngIf="descricao.invalid && formDir.submitted" class="invalid-tooltip position-static">
-      <p *ngIf="descricao.errors?.['required']" >Descrição obrigatorio</p>
+      Descrição obrigatorio
     </div>
 
     <label for="validationTooltip03" class="form-label fw-bold">Preco do produto</label>
@@ -42,11 +42,11 @@
       required
     />
     <div *ngIf="preco.invalid && formDir.submitted" class="invalid-tooltip position-static">
-      <div *ngIf="preco.errors?.['required']">Valor obrigatorio</div>
+      Valor obrigatorio
     </div>
 
     <div class="mb-5 my-4 d-grid gap-2 d-md-flex justify-content-md-center">
-      <button class="btn btn-success border border-dark" type="submit">Adicionar</button>
+      <button class="btn btn-success border border-dark" type="submit" [disabled]="formulario.invalid">Adicionar</button>
       <button class="btn btn-secondary border border-dark " type="button" (click)="toReveal()">
         Ocultar Card
       </button>

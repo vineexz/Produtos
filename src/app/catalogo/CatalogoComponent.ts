@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { APIService } from '../API/api.service';
 import { ModelsModule } from '../models/models.module';
 
@@ -24,7 +24,7 @@ export class CatalogoComponent implements OnInit {
     this.formulario = new FormGroup({
       nome: new FormControl('', [Validators.required]),
       descricao: new FormControl('', [Validators.required]),
-      preco: new FormControl(0 , [Validators.required]),
+      preco: new FormControl('' , [Validators.required]),
     })
   }
   get id() {
@@ -41,13 +41,15 @@ export class CatalogoComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.formulario.value);
+
     if(this.formulario.invalid) {
+      console.log('formulario invalido');
       return
     }else {
       console.log('enviou o formulario');
+      console.log(this.formulario.value)
     }
-    this.formulario.reset()
+
   }
 
   toReveal() {
